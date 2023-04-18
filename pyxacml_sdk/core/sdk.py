@@ -39,6 +39,7 @@ class Sdk(object):
 
     def __init__(self, configuration_file_path, domain_id, headers=None):
         """TODO: to be defined1. """
+        logging.debug(configuration_file_path)
         self.cfg = self.__init_conf__(configuration_file_path)
         self.host = self.cfg.get('pdp').get('host')
         self.port = self.cfg.get('pdp').get('port')
@@ -85,12 +86,16 @@ class Sdk(object):
         :returns: TODO
 
         """
+        
         with open(conf_file_path, 'r') as ymlfile:
-            cfg = yaml.load(ymlfile)
-        logging.debug("Dumping configuration")
-        logging.debug(cfg)
+            try:
+                cfg = yaml.safe_load(ymlfile)
+                logging.debug("Dumping configuration")
+                logging.debug(cfg)
+                return cfg
+            except yaml.YAMLError as exc:
+                print(exc)
 
-        return cfg
 
     def get_authz(self):
         """TODO: Docstring for get_authz.
