@@ -22,6 +22,22 @@ Create a [configuration file](.pyxacml_sdk/samples/config.yml) for your AuthzFor
 docker-compose up -d
 ```
 
+Create domain:
+
+```
+curl -s --request POST \
+--header "Accept: application/xml" \
+--header "Content-Type: application/xml;charset=UTF-8" \
+--data @domainProperties.xml \
+ http://localhost:8080/authzforce-ce/domains
+```
+
+Retrieve domain:
+
+```
+ curl -s --request GET http://localhost:8080/authzforce-ce/domains
+```
+
 Run the sample client on this folder:
 
 ```
