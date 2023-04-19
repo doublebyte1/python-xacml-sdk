@@ -79,7 +79,7 @@ class Net(object):
         decision = request_response.get(
             'Response').get('Result').get('Decision')
         response = (decision, request_response.get('Response'))
-
+                          
         logging.debug('Decision is: {}'.format(decision))
 
         return response
@@ -92,6 +92,11 @@ class Net(object):
 
         """
         payload = json.dumps(xacml_request, default=Tools.default_serializer)
+
+        # logging.debug("payload")
+        # logging.debug(payload)
+
+
         r = requests.post(
             'http://{host}:{port}/{endpoint}/domains/{domain}/pdp'.format(
                 host=self.tcp_ip, port=self.tcp_port,
@@ -99,8 +104,10 @@ class Net(object):
             headers=self.headers,
             data=payload,
         )
+
         if r.status_code != 200:
             logging.error("Something went wrong: {}".format(r.reason))
-        logging.debug("Response from server: {}".format(r.json()))
+            logging.debug("Response from server: {}".format(r.json()))
+            return
 
-        return self.__parse_response__(r.json())
+            return self.__parse_response__(r.json())

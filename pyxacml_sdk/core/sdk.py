@@ -153,4 +153,10 @@ class Sdk(object):
     def __build_request(self):
         data = {'Request': self.categories}
 
+        data['Request']['@ReturnPolicyIdList'] = False
+        data['Request']['@CombinedDecision'] = False
+
+        # logging.debug("Request")        
+        # logging.debug(data)
+
         return data
