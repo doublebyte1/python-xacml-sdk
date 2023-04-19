@@ -46,8 +46,8 @@ class Net(object):
 
         # Optional variables
         self.headers = {}
-        self.headers['Content-Type'] = 'Application/json'
-        self.headers['Accept'] = 'Application/json'
+        self.headers['Content-Type'] = 'application/geoxacml+json'
+        self.headers['Accept'] = 'application/geoxacml+json'
         self.headers['Authorization'] = 'Bearer {}'.format(self.token)
         if headers:
             self.headers.update(headers)
@@ -95,25 +95,47 @@ class Net(object):
         """
         payload = json.dumps(xacml_request, default=Tools.default_serializer)
 
-        logging.debug(self.headers)
+        # logging.debug(self.headers)
         logging.debug(
-            'http://{host}:{port}/{endpoint}/domains/{domain}/pdp'.format(
-                host=self.tcp_ip, port=self.tcp_port,
-                endpoint=self.endpoint, domain=self.domain_id))
+                    'https://{host}/{endpoint}/domains/{domain}/pdp'.format(
+                    host=self.tcp_ip,
+                    endpoint=self.endpoint, domain=self.domain_id)
+                )
+
+        # logging.debug(payload)
 
 
-        r = requests.post(
-            'http://{host}:{port}/{endpoint}/domains/{domain}/pdp'.format(
-                host=self.tcp_ip, port=self.tcp_port,
-                endpoint=self.endpoint, domain=self.domain_id),
-            headers=self.headers,
-            data=payload,
-        )
+        if self.tcp_port != 443:
+
+            r = requests.post(
+                'http://{host}:{port}/{endpoint}/domains/{domain}/pdp'.format(
+                    host=self.tcp_ip, port=self.tcp_port,
+                    endpoint=self.endpoint, domain=self.domain_id),
+                headers=self.headers,
+                data=payload,
+            )
+
+        else:
+            r = requests.post(
+                'https://{host}/{endpoint}/domains/{domain}/pdp'.format(
+                    host=self.tcp_ip,
+                    endpoint=self.endpoint, domain=self.domain_id),
+                headers=self.headers,
+                data=payload,
+            )
+
 
         if r.status_code != 200:
-            logging.error("Something went wrong: {}".format(r.reason))
-            logging.debug("Response from server: {}".format(r.json()))
+
+            logging.error("Something went wrong: {}".format(r.status_code))
+            # logging.debug("Response from server: {}".format(r))
+
+            # logging.error("Something went wrong: {}".format(r.reason))
+            # logging.debug("Response from server: {}".format(r.json()))
+
             return
+
+            
 
         else:
             return self.__parse_response__(r.json())

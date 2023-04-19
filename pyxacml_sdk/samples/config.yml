@@ -1,5 +1,5 @@
 pdp:
-    host: "https://ogc.demo.secure-dimensions.de"
+    host: "ogc.demo.secure-dimensions.de"
     port: 443
     endpoint: "authzforce-ce"
     ssl_verify: False
