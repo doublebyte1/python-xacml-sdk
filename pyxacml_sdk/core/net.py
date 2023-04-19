@@ -35,18 +35,20 @@ class Net(object):
 
     """Docstring for sdk. """
 
-    def __init__(self, host, endpoint, domain_id, port=8080, headers=None, *args, **kwargs):
+    def __init__(self, host, endpoint, domain_id, token, port=8080, headers=None, *args, **kwargs):
         """TODO: to be defined1. """
         logging.debug('Initializing Network client....')
         self.tcp_ip = host
         self.tcp_port = port
         self.endpoint = endpoint
         self.domain_id = domain_id
+        self.token = token
 
         # Optional variables
         self.headers = {}
         self.headers['Content-Type'] = 'Application/json'
         self.headers['Accept'] = 'Application/json'
+        self.headers['Authorization'] = 'Bearer {}'.format(self.token)
         if headers:
             self.headers.update(headers)
         print(self.headers)
@@ -93,8 +95,11 @@ class Net(object):
         """
         payload = json.dumps(xacml_request, default=Tools.default_serializer)
 
-        # logging.debug("payload")
-        # logging.debug(payload)
+        logging.debug(self.headers)
+        logging.debug(
+            'http://{host}:{port}/{endpoint}/domains/{domain}/pdp'.format(
+                host=self.tcp_ip, port=self.tcp_port,
+                endpoint=self.endpoint, domain=self.domain_id))
 
 
         r = requests.post(
@@ -110,4 +115,5 @@ class Net(object):
             logging.debug("Response from server: {}".format(r.json()))
             return
 
+        else:
             return self.__parse_response__(r.json())

@@ -40,7 +40,8 @@ if __name__ == "__main__":
         # Path to our configuration file
         "/tmp/pyxacml_sdk/config.yml",
         # Domain ID
-        "Jx1KDt6JEe2ojAJCrBIAAg")
+        # "Jx1KDt6JEe2ojAJCrBIAAg")
+       "NIgyaN4PEe2qAXKy60oYqg")
 
     # Building our attributes
     subject_attribute_romain = Attribute(

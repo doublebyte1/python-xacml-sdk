@@ -45,12 +45,13 @@ class Sdk(object):
         self.port = self.cfg.get('pdp').get('port')
         self.endpoint = self.cfg.get('pdp').get('endpoint')
         self.domain_id = domain_id
+        self.token = self.cfg.get('auth').get('token')
         self.headers = headers
         logging.debug(
-            'Initializing SDK using: [host {}, port: {}, endpoint: {}, domain_id: {}, headers: {}]'
-            .format(self.host, self.port, self.endpoint, self.domain_id, self.headers))
+            'Initializing SDK using: [host {}, port: {}, endpoint: {}, domain_id: {}, headers: {}, token: {}]'
+            .format(self.host, self.port, self.endpoint, self.domain_id, self.token, self.headers))
         self.net = Net(self.host, self.endpoint,
-                       self.domain_id, self.port, self.headers, **self.cfg)
+                       self.domain_id, self.token, self.port, self.headers, **self.cfg)
 
     def add_attribute(self, category, attribute):
         """TODO: Docstring for add_attribute.

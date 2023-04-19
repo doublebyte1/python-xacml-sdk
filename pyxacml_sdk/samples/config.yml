@@ -1,8 +1,11 @@
 pdp:
-    host: "localhost"
-    port: 8080
+    host: "https://ogc.demo.secure-dimensions.de"
+    port: 443
     endpoint: "authzforce-ce"
     ssl_verify: False
     proxy_activate: False
 auth:
     auth_type: none
+    token: ""
+
+
