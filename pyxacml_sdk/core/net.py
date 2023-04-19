@@ -128,7 +128,8 @@ class Net(object):
         if r.status_code != 200:
 
             logging.error("Something went wrong: {}".format(r.status_code))
-            # logging.debug("Response from server: {}".format(r))
+            logging.error("Something went wrong: {}".format(r.text))
+
 
             # logging.error("Something went wrong: {}".format(r.reason))
             # logging.debug("Response from server: {}".format(r.json()))
