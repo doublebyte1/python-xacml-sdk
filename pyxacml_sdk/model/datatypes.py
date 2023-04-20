@@ -27,6 +27,7 @@ class Datatype(Enum):
     IPADDRESS = "urn:oasis:names:tc:xacml:2.0:data-type:ipAddress"
     DNSNAME = "urn:oasis:names:tc:xacml:2.0:data-type:dnsName"
     XPATHEXPRESSION = "urn:oasis:names:tc:xacml:3.0:data-type:xpathExpression"
+    GEOMETRY = "urn:ogc:def:geoxacml:3.0:data-type:geometry"
 
     def __str__(self):
         return '{0}'.format(self.value)

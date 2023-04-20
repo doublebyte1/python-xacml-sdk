@@ -52,14 +52,17 @@ if __name__ == "__main__":
         Attribute_ID.ACTION_ID, "GET", Datatype.STRING)
     ressource_attribute = Attribute(
         Attribute_ID.RESOURCE_ID, "http://rootme.org", Datatype.STRING)
+    # subject_location = Attribute(
+    #     Attribute_ID.SUBJECT_ID, "Point", Datatype.GEOMETRY)
+    
 
     # Adding attributes to our request
     sdk.add_attribute(Category_ID.ACCESS_SUBJECT, subject_attribute_romain)
     sdk.add_attribute(Category_ID.ACCESS_SUBJECT, subject_attribute_cyril)
-    sdk.add_attribute(Category_ID.INTERMEDIARY_SUBJECT,
-                      subject_attribute_cyril)
-    sdk.add_attribute(Category_ID.RESOURCE, ressource_attribute)
-    sdk.add_attribute(Category_ID.ACTION, action_attribute)
+    # sdk.add_attribute(Category_ID.INTERMEDIARY_SUBJECT,
+    #                   subject_attribute_cyril)
+    # sdk.add_attribute(Category_ID.RESOURCE, ressource_attribute)
+    # sdk.add_attribute(Category_ID.ACTION, action_attribute)
 
     # Asking for Authorization
     decision, raw = sdk.get_authz()

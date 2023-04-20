@@ -78,11 +78,16 @@ class Net(object):
         :returns: TODO
 
         """
-        decision = request_response.get(
-            'Response').get('Result').get('Decision')
-        response = (decision, request_response.get('Response'))
+        # decision = request_response.get(
+        #     'Response').get('Result').get('Decision')
+        # response = (decision, request_response.get('Response'))
+
+        # logging.debug("request_response")
+        # logging.debug(request_response["Response"][0]["Decision"])
+        decision = request_response["Response"][0]["Decision"]
+        response = (decision, request_response["Response"][0])
                           
-        logging.debug('Decision is: {}'.format(decision))
+        #logging.debug('Decision is: {}'.format(decision))
 
         return response
 
@@ -139,4 +144,6 @@ class Net(object):
             
 
         else:
+            logging.debug("request ok")
+            logging.debug(r.json())
             return self.__parse_response__(r.json())
