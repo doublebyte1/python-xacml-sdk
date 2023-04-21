@@ -107,7 +107,12 @@ class Net(object):
                     endpoint=self.endpoint, domain=self.domain_id)
                 )
 
-        # logging.debug(payload)
+
+        # payload = '{"Request": {"Category": [{"CategoryId": "urn:oasis:names:tc:xacml:1.0:subject-category:access-subject","Attribute": [{"AttributeId": "subject-location","DataType": "urn:ogc:def:geoxacml:3.0:data-type:geometry","Value": {"type": "Point","coordinates": [11, 47]}}]}]}}'
+        # payload = '{"Request":{"Category":[{"CategoryId":"urn:oasis:names:tc:xacml:1.0:subject-category:access-subject","Attribute":{"AttributeId":"subject-location","Value":{"type":"Point","coordinates":[11,47]},"DataType":"urn:ogc:def:geoxacml:3.0:data-type:geometry","IncludeInResult":false}}]}}'
+
+
+        logging.debug(payload)
 
 
         if self.tcp_port != 443:
@@ -117,8 +122,7 @@ class Net(object):
                     host=self.tcp_ip, port=self.tcp_port,
                     endpoint=self.endpoint, domain=self.domain_id),
                 headers=self.headers,
-                data=payload,
-            )
+                data=payload,            )
 
         else:
             r = requests.post(

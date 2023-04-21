@@ -6,6 +6,6 @@ pdp:
     proxy_activate: False
 auth:
     auth_type: none
-    token: "71c05c9fdd67a54c1ba1cff901921930d6ee6709"
+    token: ""
 
 

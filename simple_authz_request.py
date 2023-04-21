@@ -52,13 +52,14 @@ if __name__ == "__main__":
         Attribute_ID.ACTION_ID, "GET", Datatype.STRING)
     ressource_attribute = Attribute(
         Attribute_ID.RESOURCE_ID, "http://rootme.org", Datatype.STRING)
-    # subject_location = Attribute(
-    #     Attribute_ID.SUBJECT_ID, "Point", Datatype.GEOMETRY)
+    subject_location = Attribute(
+        Attribute_ID.SUBJECT_LOCATION, {"type": "Point", "coordinates": [11, 47]}, Datatype.GEOMETRY)
     
 
     # Adding attributes to our request
-    sdk.add_attribute(Category_ID.ACCESS_SUBJECT, subject_attribute_romain)
-    sdk.add_attribute(Category_ID.ACCESS_SUBJECT, subject_attribute_cyril)
+    # sdk.add_attribute(Category_ID.ACCESS_SUBJECT, subject_attribute_romain)
+    # sdk.add_attribute(Category_ID.ACCESS_SUBJECT, subject_attribute_cyril)
+    sdk.add_attribute(Category_ID.ACCESS_SUBJECT, subject_location)
     # sdk.add_attribute(Category_ID.INTERMEDIARY_SUBJECT,
     #                   subject_attribute_cyril)
     # sdk.add_attribute(Category_ID.RESOURCE, ressource_attribute)

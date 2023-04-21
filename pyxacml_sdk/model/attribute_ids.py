@@ -26,6 +26,7 @@ class Attribute_ID(Enum):
     CURRENT_TIME = "urn:oasis:names:tc:xacml:1.0:environment:current-time"
     CURRENT_DATE = "urn:oasis:names:tc:xacml:1.0:environment:current-date"
     CURRENT_DATEXML = "urn:oasis:names:tc:xacml:1.0:environment:current-http://www.w3.org/2001/XMLSchema#date"
+    SUBJECT_LOCATION = "subject-location"
 
     def __str__(self):
         return '{0}'.format(self.value)

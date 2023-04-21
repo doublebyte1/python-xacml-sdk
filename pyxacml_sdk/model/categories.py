@@ -21,6 +21,7 @@ class Category_ID(Enum):
     ENVIRONMENT = "urn:oasis:names:tc:xacml:3.0:attribute-category:environment"
     CODEBASE = "urn:oasis:names:tc:xacml:1.0:subject-category:codebase"
     REQUESTING_MACHINE = "urn:oasis:names:tc:xacml:1.0:subject-category:requesting-machine"
+    SUBJECT_LOCATION = "subject-location"
 
     def __str__(self):
         return '{0}'.format(self.value)

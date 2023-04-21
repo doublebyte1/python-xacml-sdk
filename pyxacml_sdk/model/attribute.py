@@ -39,7 +39,7 @@ class Attribute(object):
         if(self.issuer):
             data['Issuer'] = self.issuer
         data['DataType'] = str(self.datatype)
-        data['IncludeInResult'] = self.include_in_result
+        # data['IncludeInResult'] = self.include_in_result
 
         return data
 
