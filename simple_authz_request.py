@@ -57,7 +57,7 @@ if __name__ == "__main__":
     
 
     # Adding attributes to our request
-    # sdk.add_attribute(Category_ID.ACCESS_SUBJECT, subject_attribute_romain)
+    sdk.add_attribute(Category_ID.ACCESS_SUBJECT, subject_attribute_romain)
     # sdk.add_attribute(Category_ID.ACCESS_SUBJECT, subject_attribute_cyril)
     sdk.add_attribute(Category_ID.ACCESS_SUBJECT, subject_location)
     # sdk.add_attribute(Category_ID.INTERMEDIARY_SUBJECT,
